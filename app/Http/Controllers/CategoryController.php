@@ -53,7 +53,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+
+
     }
 
     /**
@@ -77,6 +78,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+//        dd($category);
         $category->title = $request->title;
         $category->save();
         return redirect()->route('categories.index');

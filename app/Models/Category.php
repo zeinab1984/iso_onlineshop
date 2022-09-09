@@ -13,4 +13,9 @@ class Category extends Model
     {
        return $categories = Category::all();
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

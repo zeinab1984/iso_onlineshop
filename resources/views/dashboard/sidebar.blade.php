@@ -35,21 +35,27 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('categories.index')}}" class="nav-link active">
+                                <a href="{{route('categories.index')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p> لیست دسته بندی ها</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('categories.create')}}" class="nav-link active">
+                                <a href="{{route('categories.create')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>ایجاد دسته بندی جدید</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('products.index')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>صفحه غیر فعال</p>
+                                    <p>لیست محصولات</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('products.create')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>ایجاد محصول جدید</p>
                                 </a>
                             </li>
                         </ul>

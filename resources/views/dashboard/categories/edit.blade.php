@@ -2,7 +2,6 @@
 @section('title','ویرایش دسته بندی ها')
 
 @section('content')
-    {{$category}}
     <form action="{{route('categories.update',['category'=>$category->id])}}" method="post">
         @csrf
         <div class="form-group">

@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class Attribute extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','file_path'];
-
-    public function fileable()
+    public function product()
     {
-        return $this->morphTo();
+        return $this->belongsTo(Product::class);
     }
-
 }

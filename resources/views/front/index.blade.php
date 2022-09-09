@@ -25,8 +25,11 @@
             <nav class="navbar">
                 <a href="#">خانه</a>
                 <a href="#">محصولات</a>
+                <a href="#">دسته بندی ها</a>
+
                 <a href="#">ویژه</a>
                 <a href="#">نظرات</a>
+
             </nav>
 
             <div class="icons">
