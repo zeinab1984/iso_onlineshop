@@ -21,17 +21,24 @@
             <div id="menu-bar" class="fas fa-bars"></div>
 
             <a href="#" class="logo">نایک</a>
+            <div class="dropdown">
+                <nav class="navbar">
+                    <a href="#">خانه</a>
+                    <a href="#">محصولات</a>
+                        <a  href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">دسته بندی ها
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                            @foreach($categories as $category)
+                                <li>
+                                    <a href="{{route('categories.show',['category'=>$category->id])}}">{{$category->title}}</a>
+                                </li>
+                            @endforeach
+                            </ul>
+                    <a href="#">ویژه</a>
+                    <a href="#">نظرات</a>
 
-            <nav class="navbar">
-                <a href="#">خانه</a>
-                <a href="#">محصولات</a>
-                <a href="#">دسته بندی ها</a>
-
-                <a href="#">ویژه</a>
-                <a href="#">نظرات</a>
-
-            </nav>
-
+                </nav>
+            </div>
             <div class="icons">
                 <a href="#" class="fas fa-heart"></a>
                 <a href="#" class="fas fa-shopping-cart"></a>
@@ -43,61 +50,6 @@
 
                 <!-- header section ends -->
 
-                <!-- home section starts  -->
-
-                <section class="home" id="home">
-
-                    <div class="slide-container active">
-                        <div class="slide">
-                            <div class="content">
-                                <span>کفش قرمز نایک</span>
-                                <h3>کفش نایک metcon</h3>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است </p>
-                                <a href="#" class="btn">افزودن به سبد خرید</a>
-                            </div>
-                            <div class="image">
-                                <img src="images/home-shoe-1.png" class="shoe" alt="">
-                                <img src="images/home-text-1.png" class="text" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-container">
-                        <div class="slide">
-                            <div class="content">
-                                <span>کفش آبی نایک</span>
-                                <h3>کفش نایک metcon</h3>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است </p>
-                                <a href="#" class="btn">افزودن به سبد خرید</a>
-                            </div>
-                            <div class="image">
-                                <img src="images/home-shoe-2.png" class="shoe" alt="">
-                                <img src="images/home-text-2.png" class="text" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-container">
-                        <div class="slide">
-                            <div class="content">
-                                <span>کفش زرد نایک</span>
-                                <h3>کفش نایک metcon</h3>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است </p>
-                                <a href="#" class="btn">افزودن به سبد خرید</a>
-                            </div>
-                            <div class="image">
-                                <img src="images/home-shoe-3.png" class="shoe" alt="">
-                                <img src="images/home-text-3.png" class="text" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="prev" class="fas fa-chevron-left" onclick="prev()"></div>
-                    <div id="next" class="fas fa-chevron-right" onclick="next()"></div>
-
-                </section>
-
-                <!-- home section ends -->
 
                 <!-- service section starts  -->
 
@@ -132,139 +84,7 @@
                 <!-- products section starts  -->
 
                 <section class="products" id="products">
-
-                    <h1 class="heading"> آخرین <span>محصولات</span> </h1>
-
-                    <div class="box-container">
-
-                        <div class="box">
-                            <div class="icons">
-                                <a href="#" class="fas fa-heart"></a>
-                                <a href="#" class="fas fa-share"></a>
-                                <a href="#" class="fas fa-eye"></a>
-                            </div>
-                            <img src="images/product-1.png" alt="">
-                            <div class="content">
-                                <h3>کفش های نایک</h3>
-                                <div class="price">$120.99 <span>$150.99</span></div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <a href="#" class="btn">افزودن به سبد خرید</a>
-                            </div>
-                        </div>
-
-                        <div class="box">
-                            <div class="icons">
-                                <a href="#" class="fas fa-heart"></a>
-                                <a href="#" class="fas fa-share"></a>
-                                <a href="#" class="fas fa-eye"></a>
-                            </div>
-                            <img src="images/product-2.png" alt="">
-                            &lt;<div class="content">
-                                <h3>کفش های نایک</h3>
-                                <div class="price">$120.99 <span>$150.99</span></div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <a href="#" class="btn">افزودن به سبد خرید</a>
-                            </div>
-                        </div>
-
-                        <div class="box">
-                            <div class="icons">
-                                <a href="#" class="fas fa-heart"></a>
-                                <a href="#" class="fas fa-share"></a>
-                                <a href="#" class="fas fa-eye"></a>
-                            </div>
-                            <img src="images/product-3.png" alt="">
-                            <div class="content">
-                                <h3>کفش های نایک</h3>
-                                <div class="price">$120.99 <span>$150.99</span></div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <a href="#" class="btn">افزودن به سبد خرید</a>
-                            </div>
-                        </div>
-
-                        <div class="box">
-                            <div class="icons">
-                                <a href="#" class="fas fa-heart"></a>
-                                <a href="#" class="fas fa-share"></a>
-                                <a href="#" class="fas fa-eye"></a>
-                            </div>
-                            <img src="images/product-4.png" alt="">
-                            <div class="content">
-                                <h3>کفش های نایک</h3>
-                                <div class="price">$120.99 <span>$150.99</span></div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <a href="#" class="btn">افزودن به سبد خرید</a>
-                            </div>
-                        </div>
-
-                        <div class="box">
-                            <div class="icons">
-                                <a href="#" class="fas fa-heart"></a>
-                                <a href="#" class="fas fa-share"></a>
-                                <a href="#" class="fas fa-eye"></a>
-                            </div>
-                            <img src="images/product-5.png" alt="">
-                            <div class="content">
-                                <h3>کفش های نایک</h3>
-                                <div class="price">$120.99 <span>$150.99</span></div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <a href="#" class="btn">افزودن به سبد خرید</a>
-                            </div>
-                        </div>
-
-                        <div class="box">
-                            <div class="icons">
-                                <a href="#" class="fas fa-heart"></a>
-                                <a href="#" class="fas fa-share"></a>
-                                <a href="#" class="fas fa-eye"></a>
-                            </div>
-                            <img src="images/product-6.png" alt="">
-                            <div class="content">
-                                <h3>کفش های نایک</h3>
-                                <div class="price">$120.99 <span>$150.99</span></div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <a href="#" class="btn">افزودن به سبد خرید</a>
-                            </div>
-                        </div>
-
-                    </div>
-
+                    @yield('content')
                 </section>
 
                 <!-- products section ends -->
@@ -279,9 +99,6 @@
                         <div class="image-container">
                             <div class="small-image">
                                 <img src="images/f-img-1.1.png" class="featured-image-1" alt="">
-                                <img src="images/f-img-1.2.png" class="featured-image-1" alt="">
-                                <img src="images/f-img-1.3.png" class="featured-image-1" alt="">
-                                <img src="images/f-img-1.4.png" class="featured-image-1" alt="">
                             </div>
                             <div class="big-image">
                                 <img src="images/f-img-1.1.png" class="big-image-1" alt="">
@@ -291,64 +108,6 @@
                             <h3>کفش جدید نایک ایرمکس</h3>
                             <div class="stars">
                                 <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است </p>
-                            <div class="price">$80.99 <span>$120.99</span></div>
-                            <a href="#" class="btn">افزودن به سبد خرید</a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="image-container">
-                            <div class="small-image">
-                                <img src="images/f-img-2.1.png" class="featured-image-2" alt="">
-                                <img src="images/f-img-2.2.png" class="featured-image-2" alt="">
-                                <img src="images/f-img-2.3.png" class="featured-image-2" alt="">
-                                <img src="images/f-img-2.4.png" class="featured-image-2" alt="">
-                            </div>
-                            <div class="big-image">
-                                <img src="images/f-img-2.1.png" class="big-image-2" alt="">
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h3>کفش جدید نایک ایرمکس</h3>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است </p>
-                            <div class="price">$80.99 <span>$120.99</span></div>
-                            <a href="#" class="btn">افزودن به سبد خرید</a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="image-container">
-                            <div class="small-image">
-                                <img src="images/f-img-3.1.png" class="featured-image-3" alt="">
-                                <img src="images/f-img-3.2.png" class="featured-image-3" alt="">
-                                <img src="images/f-img-3.3.png" class="featured-image-3" alt="">
-                                <img src="images/f-img-3.4.png" class="featured-image-3" alt="">
-                            </div>
-                            <div class="big-image">
-                                <img src="images/f-img-3.1.png" class="big-image-3" alt="">
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h3>کفش جدید نایک ایرمکس</h3>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
                             </div>
                             <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است </p>
                             <div class="price">$80.99 <span>$120.99</span></div>

@@ -14,6 +14,8 @@ class Product extends Model
         return $products = Product::all();
     }
 
+
+
     public function pic()
     {
         return $this->morphOne(File::class,'fileable');

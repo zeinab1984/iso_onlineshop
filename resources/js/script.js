@@ -46,3 +46,5 @@ document.querySelectorAll('.featured-image-3').forEach(image_3 =>{
     document.querySelector('.big-image-3').src = src;
   });
 });
+
+
