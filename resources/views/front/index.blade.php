@@ -83,8 +83,8 @@
                 <!-- products section starts  -->
 
                 <section class="products" id="products">
-                    @yield('all products')
-                    @yield('product each of category')
+                        @yield('all products')
+                        @yield('product each of category')
                 </section>
 
                 <!-- products section ends -->
