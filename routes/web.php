@@ -18,9 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
+
 Route::prefix('/categories')->group(function (){
-    Route::get('/show/{category}',[HomeController::class,'show'])->name('categories.show');
+    Route::get('/show/{category}',[HomeController::class,'showCategory'])->name('categories.show');
 });
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');

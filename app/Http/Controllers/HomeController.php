@@ -12,11 +12,12 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::showCategory();
-        return view('front.index',compact('categories'));
+        $products = Product::showProduct();
+        return view('front.products.show_all',compact('categories','products'));
 
     }
 
-    public function show(Category $category)
+    public function showCategory(Category $category)
     {
         $categories = Category::showCategory();
 
@@ -25,6 +26,11 @@ class HomeController extends Controller
 //        dd($products);
 
         return view('front.categories.show',compact('products','categories','category'));
+
+    }
+
+    public function showProduct (Product $product)
+    {
 
     }
 }

@@ -1,6 +1,6 @@
 @extends('front.index')
 
-@section('content')
+@section('product each of category')
     <h1 class="heading">  <span>محصولات</span> {{$category->title}} </h1>
 
     <div class="box-container">

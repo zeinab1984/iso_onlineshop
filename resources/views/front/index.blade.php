@@ -23,8 +23,7 @@
             <a href="#" class="logo">نایک</a>
             <div class="dropdown">
                 <nav class="navbar">
-                    <a href="#">خانه</a>
-                    <a href="#">محصولات</a>
+                    <a href="{{route('home.index')}}">خانه</a>
                         <a  href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">دسته بندی ها
                             <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -84,7 +83,8 @@
                 <!-- products section starts  -->
 
                 <section class="products" id="products">
-                    @yield('content')
+                    @yield('all products')
+                    @yield('product each of category')
                 </section>
 
                 <!-- products section ends -->
