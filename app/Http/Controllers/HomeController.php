@@ -29,8 +29,37 @@ class HomeController extends Controller
 
     }
 
-    public function showProduct (Product $product)
+    public function Cart ()
     {
-
+        return view('front.cart.cart');
     }
+
+    public function addToCart(Product $product)
+    {
+        $categories = Category::showCategory();
+        $product = Product::findOrFail($product->id);
+        $cart = session('cart', []);
+//        dd($cart);
+        if(filled($product->pic)) {
+            $image = $product->pic->file_path;
+        }else{
+            $image = null;
+        }
+        if(isset($cart[$product->id])) {
+            $cart[$product->id]['quantity']++;
+        } else {
+            $cart[$product->id] = [
+                "name" => $product->name,
+                "quantity" => 1,
+                "price" => $product->price,
+                "image" => $image
+            ];
+        }
+
+        session(['cart'=>$cart]);
+//        dd(session('cart'));
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+
 }

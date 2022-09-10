@@ -23,6 +23,9 @@ Route::prefix('/categories')->group(function (){
     Route::get('/show/{category}',[HomeController::class,'showCategory'])->name('categories.show');
 });
 
+Route::get('cart',[HomeController::class,'Cart'])->name('cart.show');
+Route::get('add-to-cart/{product}',[HomeController::class,'addToCart'])->name('add.to.cart');
+
 
 
 Route::get('/dashboard', function () {

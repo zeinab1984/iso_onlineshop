@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!-- custom css file link  -->
     <link rel="stylesheet" href=@vite('resources/css/style.css')>
-
+    <link rel="stylesheet" href=@vite('resources/css/cart_style.css')>
     <title>Laravel</title>
 </head>
 

@@ -33,7 +33,7 @@
                            <i class="fas fa-star"></i>
                            <i class="fas fa-star"></i>
                         </div>
-                   <a href="#" class="btn">افزودن به سبد خرید</a>
+                   <a href="{{route('add.to.cart',['product'=>$product->id])}}" class="btn">افزودن به سبد خرید</a>
                    </div>
                 </div>
            @endforeach

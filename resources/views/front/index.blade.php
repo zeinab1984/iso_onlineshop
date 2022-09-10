@@ -40,7 +40,7 @@
             </div>
             <div class="icons">
                 <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-shopping-cart"></a>
+                <a href="{{route('cart.show')}}" class="fas fa-shopping-cart"></a>
                 <a href="#" class="fas fa-user"></a>
             </div>
 
@@ -77,7 +77,6 @@
                     </div>
 
                 </section>
-
                 <!-- service section ends -->
 
                 <!-- products section starts  -->
