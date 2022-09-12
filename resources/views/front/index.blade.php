@@ -84,39 +84,14 @@
                 <section class="products" id="products">
                         @yield('all products')
                         @yield('product each of category')
+                        @yield('content')
                 </section>
 
                 <!-- products section ends -->
 
                 <!-- featured section starts  -->
 
-                <section class="featured" id="featured">
 
-                    <h1 class="heading"> محصولات <span>برجسته</span></h1>
-
-                    <div class="row">
-                        <div class="image-container">
-                            <div class="small-image">
-                                <img src="images/f-img-1.1.png" class="featured-image-1" alt="">
-                            </div>
-                            <div class="big-image">
-                                <img src="images/f-img-1.1.png" class="big-image-1" alt="">
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h3>کفش جدید نایک ایرمکس</h3>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است </p>
-                            <div class="price">$80.99 <span>$120.99</span></div>
-                            <a href="#" class="btn">افزودن به سبد خرید</a>
-                        </div>
-                    </div>
-
-                </section>
-
-                <!-- featured section ends -->
 
             @include('front.footer')
 

@@ -15,20 +15,26 @@ class Product extends Model
     }
 
 
-
     public function pic()
     {
         return $this->morphOne(File::class,'fileable');
     }
+
 
     public function featuers()
     {
         return $this->hasMany(Attribute::class);
     }
 
+
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order_item::class);
     }
 
 

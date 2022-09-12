@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,10 +29,23 @@ Route::get('cart',[HomeController::class,'Cart'])->name('cart.show');
 Route::get('add-to-cart/{product}',[HomeController::class,'addToCart'])->name('add.to.cart');
 
 
+Route::prefix('/order')->middleware(['auth'])->group(function () {
+    Route::get('/show', [OrderItemController::class, 'show'])->name('order.show');
+    Route::get('/create', [OrderItemController::class, 'create'])->name('order.create');
+    Route::post('/store', [OrderItemController::class, 'store'])->name('order.store');
+});
+
+
+Route::prefix('/address')->middleware(['auth'])->group(function () {
+    Route::get('/create', [AddressController::class, 'create'])->name('address.create');
+    Route::post('/store', [AddressController::class, 'store'])->name('address.store');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
 
 Route::prefix('dashboard/categories')->middleware(['auth'])->group(function (){
     Route::get('/',[CategoryController::class,'index'])->name('categories.index');

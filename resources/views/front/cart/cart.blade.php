@@ -2,6 +2,7 @@
 <body class="antialiased">
 
 <section class="cart-details" >
+    @if(session('cart')!=null)
     <div class="box-container">
         <table id="cart" class="table table-hover table-condensed">
             <thead>
@@ -47,14 +48,33 @@
             <tr>
                 <td colspan="5" class="text-right">
                     <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>ادامه خرید</a>
-                    <button class="btn btn-success">نهایی کردن خرید</button>
+
+                        <a href="{{ route('order.show') }}" class="btn btn-success">ثبت سفارش</a>
                 </td>
             </tr>
             </tfoot>
         </table>
     </div>
+    @else
+        <div class="box-container">
+            <div class="box-container">
+                <table id="cart" class="table table-hover table-condensed">
+                    <tr>
+                        <h3>سبد خرید شما خالی است !</h3>
+                        <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>ادامه خرید</a>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    @endif
 </section>
-
+<div class="container">
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+</div>
 @include('front.footer')
 </body>
 </html>

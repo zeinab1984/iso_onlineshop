@@ -48,4 +48,14 @@ class User extends Authenticatable
     {
         return $this->morphOne(File::class,'fileable');
     }
+
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
+
+    public function order()
+    {
+        return $this->hasOne(Order_item::class);
+    }
 }
