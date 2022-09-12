@@ -2,6 +2,7 @@
 <body class="antialiased">
 
 <section class="cart-details" >
+
     @if(session('cart')!=null)
     <div class="box-container">
         <table id="cart" class="table table-hover table-condensed">
@@ -72,6 +73,14 @@
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
+        </div>
+    @endif
+</div>
+<div class="container">
+    @if(session('tracking_code'))
+        <div class="alert alert-info">
+            <h4>کد رهگیری شما:</h4>
+            {{ session('tracking_code') }}
         </div>
     @endif
 </div>
