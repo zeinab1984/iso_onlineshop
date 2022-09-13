@@ -37,10 +37,13 @@ class HomeController extends Controller
 
     }
 
+
     public function Cart ()
     {
         return view('front.cart.cart');
     }
+
+
 
     public function addToCart(Product $product)
     {
@@ -60,7 +63,9 @@ class HomeController extends Controller
                 "name" => $product->name,
                 "quantity" => 1,
                 "price" => $product->price,
-                "image" => $image
+                "image" => $image,
+                'created_at'=> now(),
+                'update_at'=>now()
             ];
         }
 
@@ -70,7 +75,33 @@ class HomeController extends Controller
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
+    public function update(Request $request,Product $product)
+    {
+//        dd($request->quantity);
+        if($request->product->id && $request->quantity)
+        {
+            $cart = session('cart');
+            $cart[$request->product->id]["quantity"] = $request->quantity;
+            $cart[$request->product->id]["update_at"] = now();
+            session(['cart'=>$cart]);
+            session()->flash('success', 'Cart updated successfully');
+        }
+        return redirect()->route('cart.show');
+    }
 
 
+    public function destroy(Request $request,Product $product)
+    {
+
+        if($request->product->id) {
+            $cart = session('cart');
+            if(isset($cart[$request->product->id])) {
+                unset($cart[$request->product->id]);
+                session(['cart'=> $cart]);
+            }
+            session()->flash('success', 'محصول با موفقیت حذف شد');
+        }
+        return redirect()->route('cart.show');
+    }
 
 }

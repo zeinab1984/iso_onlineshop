@@ -18,27 +18,33 @@
             <tbody>
             @php $total = 0 @endphp
             @if(session('cart'))
-
                 @foreach(session('cart') as $id => $details)
-                    @php $total += ($details['price'] * $details['quantity']) @endphp
-                    <tr data-id="{{ $id }}">
-                        <td data-th="Product">
-                            <div class="row">
-                                <div class="col-sm-3 hidden-xs"><img src="{{url('storage/'.$details['image'])  }}" width="100" height="100" class="img-responsive"/></div>
-                                <div class="col-sm-9">
-                                    <h4 class="nomargin">{{ $details['name'] }}</h4>
+                 @php $total += ($details['price'] * $details['quantity']) @endphp
+                        <tr data-id="{{ $id }}">
+                            <td data-th="Product">
+                                <div class="row">
+                                    <div class="col-sm-3 hidden-xs"><img src="{{url('storage/'.$details['image'])  }}" width="100" height="100" class="img-responsive"/></div>
+                                    <div class="col-sm-9">
+                                        <h4 class="nomargin">{{ $details['name'] }}</h4>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td data-th="Price">{{ $details['price'] }} تومان</td>
-                        <td data-th="Quantity">
-                            <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
-                        </td>
-                        <td data-th="Subtotal" class="text-center">{{ $details['price'] * $details['quantity'] }} تومان </td>
-                        <td class="actions" data-th="">
-                            <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
-                        </td>
-                    </tr>
+                            </td>
+                            <td data-th="Price">{{ $details['price'] }} تومان</td>
+                            <td data-th="Quantity">
+                                <form action="{{route('update.cart',['product'=>$id])}}" method="post">
+                                    @csrf
+                                <input type="number"  name="quantity" value="{{ $details['quantity'] }}" class="form-control quantity update-cart"  />
+                                    <button class="btn btn-warning  update-cart">تایید</button>
+                                </form>
+                            </td>
+                            <td data-th="Subtotal" class="text-center">{{ $details['price'] * $details['quantity'] }} تومان </td>
+                            <form action="{{route('destroy.cart',['product'=>$id])}}">
+                                @csrf
+                                <td class="actions" data-th="">
+                                <button class="btn btn-danger  remove-from-cart">حذف</button>
+                                </td>
+                            </form>
+                        </tr>
                 @endforeach
             @endif
             </tbody>

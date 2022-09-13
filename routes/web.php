@@ -41,6 +41,8 @@ Route::prefix('/categories')->group(function (){
 
 Route::get('cart',[HomeController::class,'Cart'])->name('cart.show');
 Route::get('add-to-cart/{product}',[HomeController::class,'addToCart'])->name('add.to.cart');
+Route::post('update/{product}',[HomeController::class,'update'])->name('update.cart');
+Route::get('destroy/{product}',[HomeController::class,'destroy'])->name('destroy.cart');
 
 
 Route::prefix('/order')->middleware(['auth'])->group(function () {
