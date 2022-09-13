@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderDone;
 use App\Models\Address;
 use App\Models\Category;
 use App\Models\Order_detail;
@@ -78,7 +79,7 @@ class OrderItemController extends Controller
         $transaction->tracking_code = $tracking_code;
         $transaction->save();
 
-
+        OrderDone::dispatch($user_id);
         session()->forget('cart');
         return redirect('cart')->with('success','پرداخت شما با موفقیت انجام شد')
             ->with('tracking_code',$tracking_code);
