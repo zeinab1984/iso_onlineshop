@@ -5,25 +5,12 @@
 {{--        </div>--}}
                 <!-- header section starts  -->
         <header>
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
             <div id="menu-bar" class="fas fa-bars"></div>
-
             <a href="#" class="logo">نایک</a>
-            <div class="dropdown">
+
                 <nav class="navbar">
-                    <a href="{{route('home.index')}}">خانه</a>
+                    <div class="dropdown">
                         <a  href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">دسته بندی ها
                             <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -33,17 +20,29 @@
                                 </li>
                             @endforeach
                             </ul>
-                    <a href="#">ویژه</a>
-                    <a href="#">نظرات</a>
-
+{{--                    <a href="#">ویژه</a>--}}
+{{--                    <a href="#">نظرات</a>--}}
+                    </div>
                 </nav>
-            </div>
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="{{route('cart.show')}}" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-user"></a>
-            </div>
 
+            <div class="icons">
+                <a href="{{route('home.index')}}" class="fa fa-home"></a>
+{{--                <a href="#" class="fas fa-heart"></a>--}}
+                <a href="{{route('cart.show')}}" class="fas fa-shopping-cart"></a>
+                    @if (Route::has('login'))
+                        <img src="{{url('storage/'.$user_avatar)}}" class="img-circle elevation-2" alt="User Image" style="width:50px ">
+                            @auth
+                                <a href="{{ url('/dashboard') }}">داشبورد</a>
+                                <a href="{{ url('logout') }}" class="fa login-box"> خروج</a>
+                            @else
+                                <a href="{{ route('login') }}" class="fas fa-user"></a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="fa fa-registered"> </a>
+                                @endif
+                            @endauth
+                    @endif
+            </div>
         </header>
 
 

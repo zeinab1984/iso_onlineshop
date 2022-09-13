@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +22,18 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
+
+Route::get('/dashboard', function () {
+    return view('dashboard.dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::prefix('dashboard/users')->middleware(['auth'])->group( function () {
+    Route::get('/show',[UserController::class,'showUsers'])->name('users.show');
+    Route::get('/assignment_role/{user}',[UserController::class,'assignmentRole'])->name('users.assignment.role');
+    Route::post('/store_role/{user}',[UserController::class,'storeRole'])->name('users.store.role');
+    Route::get('/destroy/{user}',[UserController::class,'destroy'])->name('users.destroy');
+
+});
 
 Route::prefix('/categories')->group(function (){
     Route::get('/show/{category}',[HomeController::class,'showCategory'])->name('categories.show');
@@ -41,9 +55,6 @@ Route::prefix('/address')->middleware(['auth'])->group(function () {
     Route::post('/store', [AddressController::class, 'store'])->name('address.store');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 
 
@@ -65,5 +76,12 @@ Route::prefix('dashboard/products')->middleware(['auth'])->group(function (){
     Route::get('/edit/{product}',[ProductController::class,'edit'])->name('products.edit');
     Route::get('/destroy/{product}',[ProductController::class,'destroy'])->name('products.destroy');
 });
+
+Route::prefix('/profile')->middleware(['auth'])->group(function () {
+    Route::get('/index', [UserController::class, 'index'])->name('user.index');
+    Route::post('/update/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::get('/myorders', [UserController::class, 'myOrders'])->name('user.myorders');
+});
+
 require __DIR__.'/auth.php';
 

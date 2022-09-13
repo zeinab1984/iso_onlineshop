@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
 
@@ -62,5 +63,33 @@ class User extends Authenticatable
     public function transaction()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public static function getAvatar()
+    {
+        if(Auth::check())
+        {
+            if(filled(Auth::user()->pic))
+            {
+                return $user_avatar = Auth::user()->pic->file_path;
+            }else{
+                return $user_avatar = 'profile/1663002787_avatar3.png';
+            }
+        }
+
+    }
+
+    public static function getUsername()
+    {
+        if(Auth::check())
+        {
+            if(filled(Auth::user()->name))
+            {
+                return $user_name = Auth::user()->name;
+            }else{
+                return $user_name = '';
+            }
+        }
+
     }
 }

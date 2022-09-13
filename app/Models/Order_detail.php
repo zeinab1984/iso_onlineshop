@@ -14,8 +14,5 @@ class Order_detail extends Model
         return $this->belongsTo(Order_item::class);
     }
 
-    public function discount()
-    {
-        return $this->hasOne(Discount::class);
-    }
+
 }

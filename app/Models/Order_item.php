@@ -24,6 +24,8 @@ class Order_item extends Model
         return $this->hasOne(Order_detail::class);
     }
 
+
+
 //    public function transaction()
 //    {
 //        return $this->hasOne(Transaction::class);

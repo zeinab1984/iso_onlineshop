@@ -13,10 +13,10 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="https://www.gravatar.com/avatar/52f0fbcbedee04a121cba8dad1174462?s=200&d=mm&r=g" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{url('storage/'.$user_avatar)}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">حسام</a>
+                    <a href="#" class="d-block">{{$user_name}}</a>
                 </div>
             </div>
 
@@ -25,15 +25,40 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fa fa-dashboard"></i>
+{{--                    <li class="nav-item has-treeview menu-open">--}}
+                    <li class="nav-item has-treeview">
+                        <a href="{{route('user.index')}}" class="nav-link">
+                            <i class="nav-icon fa fa-pie-chart"></i>
                             <p>
-                                پروفایل شخصی
+                                مشخصات من
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
+
+                        <ul class="nav nav-treeview" style="display: block;">
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>تغییر رمز عبور</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview" style="display: block;">
+                            <li class="nav-item">
+                                <a href="{{route('user.myorders')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p> لیست سفارشات من</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                        @if(auth()->user()->hasRole('admin'))
+                            <li class="nav-item">
+                                <a href="{{route('users.show')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p> لیست کاربران</p>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="{{route('categories.index')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
@@ -58,18 +83,18 @@
                                     <p>ایجاد محصول جدید</p>
                                 </a>
                             </li>
-                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('logout')}}" class="nav-link">
                             <i class="nav-icon fa fa-th"></i>
                             <p>
-                                لینک ساده
-                                <span class="right badge badge-danger">جدید</span>
+                               خروج
                             </p>
                         </a>
                     </li>
+                    @endif
                 </ul>
+
             </nav>
             <!-- /.sidebar-menu -->
         </div>

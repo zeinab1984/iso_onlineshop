@@ -9,8 +9,4 @@ class Discount extends Model
 {
     use HasFactory;
 
-    public function OrderDetail()
-    {
-        return $this->belongsTo(Order_detail::class);
-    }
 }
