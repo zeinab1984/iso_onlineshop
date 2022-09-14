@@ -1,10 +1,13 @@
-@include('front.header')
-<body class="antialiased">
+{{--@include('front.header')--}}
+@extends('front.index')
+@section('content')
 
-<section class="cart-details" >
-
-    @if(session('cart')!=null)
     <div class="box-container">
+        <div class="box">
+            <div class="content">
+                <h4 class="card-title mb-2 text-bold">سبد خرید شما</h4><br>
+    @if(session('cart')!=null)
+
         <table id="cart" class="table table-hover table-condensed">
             <thead>
             <tr>
@@ -16,10 +19,10 @@
             </tr>
             </thead>
             <tbody>
-            {{$total = 0 }}
+            @php $total = 0 @endphp
             @if(session('cart'))
                 @foreach(session('cart') as $id => $details)
-                    {{$total += ($details['price'] * $details['quantity']) }}
+                    @php $total += ($details['price'] * $details['quantity']) @endphp
                         <tr data-id="{{ $id }}">
                             <td data-th="Product">
                                 <div class="row">
@@ -63,8 +66,11 @@
         </table>
     </div>
     @else
+
+        </div>
+    </div>
         <div class="box-container">
-            <div class="box-container">
+            <div class="box">
                 <table id="cart" class="table table-hover table-condensed">
                     <tr>
                         <h3>سبد خرید شما خالی است !</h3>
@@ -74,7 +80,7 @@
             </div>
         </div>
     @endif
-</section>
+
 <div class="container">
     @if(session('success'))
         <div class="alert alert-success">
@@ -90,6 +96,6 @@
         </div>
     @endif
 </div>
-@include('front.footer')
-</body>
-</html>
+{{--@include('front.footer')--}}
+@endsection
+
