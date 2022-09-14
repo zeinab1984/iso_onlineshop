@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,8 +42,8 @@ Route::prefix('/categories')->group(function (){
 
 Route::get('cart',[HomeController::class,'Cart'])->name('cart.show');
 Route::get('add-to-cart/{product}',[HomeController::class,'addToCart'])->name('add.to.cart');
-Route::post('update/{product}',[HomeController::class,'update'])->name('update.cart');
-Route::get('destroy/{product}',[HomeController::class,'destroy'])->name('destroy.cart');
+Route::post('/update/{product}',[HomeController::class,'update'])->name('update.cart');
+Route::get('/destroy/{product}',[HomeController::class,'destroy'])->name('destroy.cart');
 
 
 Route::prefix('/order')->middleware(['auth'])->group(function () {
@@ -56,7 +57,10 @@ Route::prefix('/address')->middleware(['auth'])->group(function () {
     Route::get('/create', [AddressController::class, 'create'])->name('address.create');
     Route::post('/store', [AddressController::class, 'store'])->name('address.store');
 });
-
+Route::prefix('/transaction')->middleware(['auth'])->group(function () {
+ Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
+Route::post('/store', [TransactionController::class, 'store'])->name('transaction.store');
+});
 
 
 

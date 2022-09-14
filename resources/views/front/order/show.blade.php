@@ -37,10 +37,21 @@
                     </div>
                         <input type="hidden" value="{{$id}}" name="product_id">
                     @endforeach
-                    <button type="submit" class="btn btn-block btn-outline-primary">تایید نهایی و پرداخت</button>
+                    <div class="form-group">
+                        <label>مجموع</label>
+                        <input  name="total" type="text" class="form-control" value="{{$total}}" disabled/>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-outline-primary">تایید نهایی </button>
 
                 </form>
             </div>
         </div>
+    </div>
+    <div class="container">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
     </div>
 @endsection

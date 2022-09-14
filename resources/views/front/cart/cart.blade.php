@@ -16,10 +16,10 @@
             </tr>
             </thead>
             <tbody>
-            @php $total = 0 @endphp
+            {{$total = 0 }}
             @if(session('cart'))
                 @foreach(session('cart') as $id => $details)
-                 @php $total += ($details['price'] * $details['quantity']) @endphp
+                    {{$total += ($details['price'] * $details['quantity']) }}
                         <tr data-id="{{ $id }}">
                             <td data-th="Product">
                                 <div class="row">
@@ -56,7 +56,7 @@
                 <td colspan="5" class="text-right">
                     <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>ادامه خرید</a>
 
-                        <a href="{{ route('order.show') }}" class="btn btn-success">ثبت سفارش</a>
+                        <a href="{{ route('order.show',['total'=>$total]) }}" class="btn btn-success">ثبت سفارش</a>
                 </td>
             </tr>
             </tfoot>

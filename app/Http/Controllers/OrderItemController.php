@@ -46,9 +46,7 @@ class OrderItemController extends Controller
 
 //        dd($request);
 
-        $user_id = Auth::user()->id;
-        $tracking_code = uniqid('ORD.');
-//        dd($tracking_code);
+        $user_id = Auth::id();
         $total = 0;
         foreach (session('cart') as $id => $item)
         {
@@ -72,17 +70,8 @@ class OrderItemController extends Controller
             $total += $item['quantity']*$item['price'];
         }
 
-        $transaction = new Transaction();
-        $transaction->user_id = $user_id;
-        $transaction->amount = $total;
-        $transaction->status = 'paid';
-        $transaction->tracking_code = $tracking_code;
-        $transaction->save();
+        return view('front.transaction.transaction',['total'=>$total])->with('success','سفارش شما با موفقیت ثبت شد لطفا با یکی از روش های پرداخت،مبلغ مورد نظر را پرداخت کنید');
 
-        OrderDone::dispatch($user_id);
-        session()->forget('cart');
-        return redirect('cart')->with('success','پرداخت شما با موفقیت انجام شد')
-            ->with('tracking_code',$tracking_code);
 
     }
 
@@ -92,14 +81,16 @@ class OrderItemController extends Controller
      * @param  \App\Models\Order_item  $order_item
      * @return \Illuminate\Http\Response
      */
-    public function show(Order_item $order_item)
+    public function show(Request $request,Order_item $order_item)
     {
+//        dd($request->total);
         $user = Auth::user();
         $categories = Category::showCategory();
-
+        $total = $request->total;
         $data = [
             'user' => $user,
-             'categories'=> $categories,
+            'categories'=> $categories,
+            'total'=> $total
         ];
         if(Auth::check()){
             if(filled($user->address)){

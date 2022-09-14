@@ -77,7 +77,7 @@ class HomeController extends Controller
 
     public function update(Request $request,Product $product)
     {
-//        dd($request->quantity);
+//        dd($request->qty);
         if($request->product->id && $request->quantity)
         {
             $cart = session('cart');
