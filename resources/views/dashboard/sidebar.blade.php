@@ -13,7 +13,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{url('storage/'.$user_avatar)}}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{url('uploads/'.$user_avatar)}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">{{$user_name}}</a>
@@ -35,14 +35,14 @@
                             </p>
                         </a>
 
-                        <ul class="nav nav-treeview" style="display: block;">
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>تغییر رمز عبور</p>
-                                </a>
-                            </li>
-                        </ul>
+{{--                        <ul class="nav nav-treeview" style="display: block;">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="" class="nav-link">--}}
+{{--                                    <i class="fa fa-circle-o nav-icon"></i>--}}
+{{--                                    <p>تغییر رمز عبور</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
                         <ul class="nav nav-treeview" style="display: block;">
                             <li class="nav-item">
                                 <a href="{{route('user.myorders')}}" class="nav-link">

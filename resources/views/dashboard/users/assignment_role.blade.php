@@ -13,7 +13,7 @@
             </div>
             <div class="form-group">
                 <div class="form-check">
-                    <input class="form-check-input" name="role[]" type="checkbox" value="1" id="flexCheckDefault" @if($user->hasRole('admin'))checked @endif>
+                    <input class="form-check-input" name="role[]" type="checkbox" value="5" id="flexCheckDefault" @if($user->hasRole('admin'))checked @endif>
                     <label class="form-check-label" for="flexCheckDefault">مدیر سایت</label>
                 </div>
 {{--                <div class="form-check">--}}
@@ -21,11 +21,11 @@
 {{--                    <label class="form-check-label" for="flexCheckChecked">نویسنده</label>--}}
 {{--                </div>--}}
                 <div class="form-check">
-                    <input class="form-check-input" name="role[]" type="checkbox" value="2" id="flexCheckChecked" @if($user->hasRole('editor'))checked @endif>
+                    <input class="form-check-input" name="role[]" type="checkbox" value="6" id="flexCheckChecked" @if($user->hasRole('editor'))checked @endif>
                     <label class="form-check-label" for="flexCheckChecked">ویرایش گر</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="role[]" type="checkbox" value="3" id="flexCheckChecked" @if($user->hasRole('customer'))checked @endif>
+                    <input class="form-check-input" name="role[]" type="checkbox" value="7" id="flexCheckChecked" @if($user->hasRole('customer'))checked @endif>
                     <label class="form-check-label" for="flexCheckChecked">مشتری</label>
                 </div>
             </div>

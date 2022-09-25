@@ -73,7 +73,7 @@
             <div class="box">
                 <table id="cart" class="table table-hover table-condensed">
                     <tr>
-                        <h3>سبد خرید شما خالی است !</h3>
+{{--                        <h3>سبد خرید شما خالی است !</h3>--}}
                         <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>ادامه خرید</a>
                     </tr>
                 </table>

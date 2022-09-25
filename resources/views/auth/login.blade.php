@@ -31,7 +31,15 @@
                                 name="password"
                                 required autocomplete="current-password" />
             </div>
+            <!-- Register -->
+            <div class="block mt-4">
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Register') }}</span>
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                        {{ __('Do you have registered?') }}
+                    </a>
 
+                </label>
+            </div>
             <!-- Remember Me -->
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">

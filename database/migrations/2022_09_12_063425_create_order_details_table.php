@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_item_id');
-            $table->foreignId('discount_id')->nullable();
-            $table->string('price');
-            $table->unsignedBigInteger('total');
+            $table->foreignId('product_id');
+            $table->unsignedBigInteger('qty');
             $table->timestamps();
         });
     }

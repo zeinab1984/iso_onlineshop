@@ -14,20 +14,13 @@ class Order_item extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function product()
+    public function orderDetails()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(Order_detail::class);
     }
 
-    public function orderDetail()
+    public function transaction()
     {
-        return $this->hasOne(Order_detail::class);
+        return $this->hasOne(Transaction::class);
     }
-
-
-
-//    public function transaction()
-//    {
-//        return $this->hasOne(Transaction::class);
-//    }
 }

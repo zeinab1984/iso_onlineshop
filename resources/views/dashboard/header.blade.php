@@ -9,24 +9,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>پنل مدیریت | شروع سریع</title>
+    <title>پنل مدیریت </title>
 
     <!-- Font Awesome Icons -->
 {{--    <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/font-awesome.min.css')}}">--}}
-    <link rel="stylesheet" href= @vite(['resources/plugins/font-awesome/css/font-awesome.min.css'])>
+    <link rel="stylesheet" href= "{{asset('plugins/font-awesome/css/font-awesome.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href=@vite(['resources/dist/css/adminlte.min.css'])>
+    <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <!-- bootstrap rtl -->
-    <link rel="stylesheet" href=@vite(['resources/dist/css/bootstrap-rtl.min.css'])>
+    <link rel="stylesheet" href="{{asset('dist/css/bootstrap-rtl.min.css')}}">
     <!-- template rtl version -->
-    <link rel="stylesheet" href=@vite(['resources/dist/css/custom-style.css'])>
+    <link rel="stylesheet" href="{{asset('dist/css/custom-style.css')}}">
 
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+{{--<div class="wrapper">--}}
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
         <!-- Left navbar links -->
@@ -54,4 +56,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
         </form>
     </nav>
+
 

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('order_item_id');
             $table->unsignedBigInteger('amount');
             $table->enum('status',['paid','unpaid','pending']);
             $table->string('tracking_code');

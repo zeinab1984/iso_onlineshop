@@ -49,6 +49,7 @@ class TransactionController extends Controller
 
         $transaction = new Transaction();
         $transaction->user_id = $user_id;
+        $transaction->order_item_id = $user_id;
         $transaction->amount = $total;
         $transaction->status = 'paid';
         $transaction->tracking_code = $tracking_code;
@@ -71,7 +72,7 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('transaction.transaction');
     }
 
     /**

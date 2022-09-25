@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +19,9 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if(filled($user->pic)) {
-            $pic = $user->pic->file_path;
-        }else{
-            $pic = 'storage/public/profile/default.jpg';
-        }
+
 //        dd($pic);
-        return view('dashboard.profile.index',compact('user','pic'));
+        return view('dashboard.profile.index',compact('user'));
     }
 
     /**
@@ -36,8 +33,13 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $orders = $user->orders;
-
-        return view('dashboard.profile.myorders',compact('orders'));
+        foreach($orders as $order) {
+            if (!filled($order->product)) {
+                return view('dashboard.profile.empty', compact('orders'));
+            } else {
+                return view('dashboard.profile.myorders', compact('orders'));
+            }
+        }
     }
 
     /**
@@ -67,6 +69,7 @@ class UserController extends Controller
     public function showUsers()
     {
         $users = User::all();
+
         return view('dashboard.users.user_index',compact('users'));
     }
 
@@ -109,7 +112,7 @@ class UserController extends Controller
             $pic = $request->file('image');
             $path = 'profile';
             $fileName = time().'_'.$pic->getClientOriginalName();
-            $pic->storeAs('public/'.$path,$fileName);
+            $pic->storeAs($path,$fileName);
 
             $file = new File([
                 'name'=> $fileName,

@@ -4,7 +4,7 @@
 @section('content')
 
     <h4 class="card-title mb-2 text-bold">ویرایش محصول</h4><br>
-    <img src="{{$image_path}}" style="width: 100px;height: auto">
+    <img src="{{url('uploads/'.$image_path)}}" style="width: 100px;height: auto">
 
     <form action="{{route('products.update',['product'=>$product->id])}}" method="post" enctype="multipart/form-data">
         @csrf

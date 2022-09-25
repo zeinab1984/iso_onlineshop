@@ -14,5 +14,8 @@ class Order_detail extends Model
         return $this->belongsTo(Order_item::class);
     }
 
-
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

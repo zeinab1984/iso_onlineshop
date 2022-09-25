@@ -52,20 +52,19 @@ class OrderItemController extends Controller
         {
             $order_item = new Order_item();
             $order_item->user_id = $user_id;
-            $order_item->product_id = $id;
-            $order_item->qty = $item['quantity'];
+            $order_item->amount = $item['price'];
+            if($order_item->discount){
+                $order_item->discount_id = $order_item->discount->id;
+            }else{
+                $order_item->discount_id = null;
+            }
+            $order_item->final_price = $item['quantity']* $item['price'];
             $order_item->save();
 
             $order_detail = new Order_detail();
             $order_detail->order_item_id = $order_item->id;
-            if($order_detail->discount){
-                $order_detail->discount_id = $order_detail->discount->id;
-            }else{
-                $order_detail->discount_id = null;
-            }
-
-            $order_detail->price = $item['price'];
-            $order_detail->total = $item['quantity']* $item['price'];
+            $order_detail->product_id = $id;
+            $order_detail->qty = $item['quantity'];
             $order_detail->save();
             $total += $item['quantity']*$item['price'];
         }

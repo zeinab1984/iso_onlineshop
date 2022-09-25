@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="form-group">
-       <image src="{{url('storage/'.$pic)}}"></image>
+        <img src="{{url('storage/'.$user_avatar)}}"/>
     </div>
     <form  method="post" action="{{route('user.update',['user'=>$user->id])}}" enctype="multipart/form-data" >
         @csrf
@@ -29,13 +29,15 @@
             </div>
             <div class="form-group">
                 <label> ایمیل:</label>
-                <input type="email" name="user_email" value="{{$user->email}}" class="form-control" >
+                <label>
+                    <input type="email" name="user_email" value="{{$user->email}}" class="form-control" />
+                </label>
             </div>
-            <div class="form-group">
-                <h4> تغییر رمز عبور :</h4>
-                <label> رمز عبور جدید</label>
-                <input type="email" name="user_email"  class="form-control" placeholder="رمز عبور جدید خود را وارد نمایید" >
-            </div>
+{{--            <div class="form-group">--}}
+{{--                <h4> تغییر رمز عبور :</h4>--}}
+{{--                <label> رمز عبور جدید</label>--}}
+{{--                <input type="email" name="user_email"  class="form-control" placeholder="رمز عبور جدید خود را وارد نمایید" >--}}
+{{--            </div>--}}
             <div class="custom-file">
                 <input type="file" name="image" class="custom-file-input" id="chooseFile">
                 <label class="custom-file-label" for="chooseFile">انتخاب عکس</label>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\File;
 use App\Models\Product;
@@ -41,6 +42,11 @@ class ProductController extends Controller
      */
     public function store(Request $request,File $file)
     {
+
+
+
+
+
         $product = new Product();
         $product->name = $request->title;
         $product->category_id = $request->category_id;
@@ -48,16 +54,32 @@ class ProductController extends Controller
         $product->qty = $request->qty;
         $product->description = $request->description;
         $product->save();
+
+
+
+//            dd($attribute);
+            $i = 0;
+            while(isset($request->key[$i])) {
+                $attribute = new Attribute();
+                $attribute->product_id = $product->id;
+
+                $attribute->key = $request->key[$i];
+                $attribute->value = $request->value[$i];
+                $attribute->save();
+                $i++;
+            }
+
         if($request->hasFile('image')){
 
             $pic = $request->file('image');
             $path = 'products';
             $fileName = time().'_'.$pic->getClientOriginalName();
-            $pic->storeAs('public/'.$path,$fileName);
+            $pic->storeAs($path,$fileName);
 
             $file = new File([
                 'name'=> $fileName,
-                'file_path'=> 'products'.'/'.$fileName,            ]);
+                'file_path'=> 'products'.'/'.$fileName,
+                ]);
             $product->pic()->save($file);
         }
         return redirect()->route('products.index');
@@ -85,7 +107,8 @@ class ProductController extends Controller
 
         $categories = Category::showCategory();
         if(filled($product->pic)){
-            $image_path = storage::url($product->pic->file_path);
+            $image_path = $product->pic->file_path;
+//            dd( $image_path);
         }else{
             $image_path = "<p>عکسی برای محصول پیدا نشد!</p>";
         }
@@ -120,7 +143,7 @@ class ProductController extends Controller
             $pic = $request->file('image');
             $path = 'products';
             $fileName = time().'_'.$pic->getClientOriginalName();
-            $pic->storeAs('public/'.$path,$fileName);
+            $pic->storeAs($path,$fileName);
 
             $file = new File([
                 'name'=> $fileName,

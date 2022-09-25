@@ -59,6 +59,7 @@ Route::prefix('/address')->middleware(['auth'])->group(function () {
 });
 Route::prefix('/transaction')->middleware(['auth'])->group(function () {
  Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
+ Route::get('/show', [TransactionController::class, 'show'])->name('transaction.show');
 Route::post('/store', [TransactionController::class, 'store'])->name('transaction.store');
 });
 
